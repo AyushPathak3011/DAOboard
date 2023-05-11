@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import daologo from "../Logo.png";
+import daologo1 from "../logo_type_white_nav1.png";
 
 function LeaderBoard() {
   const [open, setOpen] = useState(false);
@@ -50,9 +52,7 @@ function LeaderBoard() {
     }
   };
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div>
       <Modal
@@ -80,6 +80,23 @@ function LeaderBoard() {
           </div>
         </Box>
       </Modal>
+
+      {/* navbar */}
+      <div className="navbar bg-sky-800 flex gap-4 items-center p-4 justify-space-between">
+        <div className="flex self-end">
+          <a href="/" className="button-link">
+            <img
+              className="w-10 animate-[spin_3s_linear_infinite]"
+              src={daologo}
+              alt=""
+            />
+            <span></span>
+          </a>
+        </div>
+        <a href="/" className="button-link">
+          <img src={daologo1} alt="Dao Text Logo" />
+        </a>
+      </div>
       <div className="bg-sky-900 h-screen flex flex-col items-center justify-center">
         <div>
           <h1 className="font-bold text-blue-50 text-2xl mb-4">
@@ -128,13 +145,15 @@ function LeaderBoard() {
                   <td class="px-6 py-4 text-black">
                     {parseInt(dat[2]._hex, 16)}
                   </td>
-                  <td class="px-6 py-4 text-black">{dat[4] ? dat[5] : "member"}</td>
+                  <td class="px-6 py-4 text-black">
+                    {dat[4] ? dat[5] : "member"}
+                  </td>
                   <td class="px-6 py-4 text-black">
                     {parseInt(dat[7]._hex, 16) ? parseInt(dat[7]._hex, 16) : ""}
                   </td>
                   <td>
                     {parseInt(dat[7]._hex, 16) !== 0 &&
-                      dat[6].toLowerCase() === currentUser.toLowerCase() ? (
+                    dat[6].toLowerCase() === currentUser.toLowerCase() ? (
                       <button
                         onClick={() =>
                           handleOpen(dat[0], parseInt(dat[7]._hex, 16))
